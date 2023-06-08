@@ -8,8 +8,8 @@ namespace WebAppTest.Models
         {
         }
 
-        DbSet<Department> DepartmentSet { get; set; }  
-        DbSet<Employee> EmployeeSet { get; set; }  
-        DbSet<TimeSheet> TimeSheetSet { get; set; }
+        public DbSet<Department> DepartmentSet { get; set; }
+        public DbSet<Employee> EmployeeSet { get; set; }
+       public DbSet<TimeSheet> TimeSheetSet { get; set; }
     }
 }
