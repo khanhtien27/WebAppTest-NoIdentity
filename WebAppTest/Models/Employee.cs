@@ -22,16 +22,16 @@ namespace WebAppTest.Models
         public string? Address { get; set; }
 
         [Required]
-        [ForeignKey("IdDepartment")]
+        [ForeignKey("department")]
         public int IdDepartment { get; set; }
-        public Department department { get; set; }
+        public Department? department { get; set; }
 
         public string? Img { get; set; }
 
         [Required]
         public string Password { get; set; }
         
-        public DateTime Create_At { get; set; } = DateTime.Now;
+        public DateTime? Create_At { get; set; } = DateTime.Now;
 
     }
 }

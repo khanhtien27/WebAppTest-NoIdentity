@@ -9,9 +9,9 @@ namespace WebAppTest.Models
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey("IdEmployment")]
+        [ForeignKey("employee")]
         public int IdEmployment { get; set; }
-        public Employee employee { get; set; }
+        public Employee? employee { get; set; }
 
         [Required]
         public DateTime Start { get; set; }
