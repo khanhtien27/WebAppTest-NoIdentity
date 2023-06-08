@@ -12,8 +12,8 @@ using WebAppTest.Models;
 namespace WebAppTest.Migrations
 {
     [DbContext(typeof(WebAppTestDbContext))]
-    [Migration("20230608040818_CreateDatabase")]
-    partial class CreateDatabase
+    [Migration("20230608045220_Edit database")]
+    partial class Editdatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,7 +66,7 @@ namespace WebAppTest.Migrations
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Create_At")
+                    b.Property<DateTime?>("Create_At")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("IdDepartment")
@@ -86,12 +86,9 @@ namespace WebAppTest.Migrations
                     b.Property<int>("Sex")
                         .HasColumnType("int");
 
-                    b.Property<int>("departmentId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("departmentId");
+                    b.HasIndex("IdDepartment");
 
                     b.ToTable("EmployeeSet");
                 });
@@ -119,12 +116,9 @@ namespace WebAppTest.Migrations
                     b.Property<DateTime>("Start")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("employeeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("employeeId");
+                    b.HasIndex("IdEmployment");
 
                     b.ToTable("TimeSheetSet");
                 });
@@ -133,7 +127,7 @@ namespace WebAppTest.Migrations
                 {
                     b.HasOne("WebAppTest.Models.Department", "department")
                         .WithMany()
-                        .HasForeignKey("departmentId")
+                        .HasForeignKey("IdDepartment")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -144,7 +138,7 @@ namespace WebAppTest.Migrations
                 {
                     b.HasOne("WebAppTest.Models.Employee", "employee")
                         .WithMany()
-                        .HasForeignKey("employeeId")
+                        .HasForeignKey("IdEmployment")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
