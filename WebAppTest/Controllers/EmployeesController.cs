@@ -19,11 +19,20 @@ namespace WebAppTest.Controllers
         }
 
         // GET: Employees
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? Id)
         {
-              return _context.EmployeeSet != null ? 
-                          View(await _context.EmployeeSet.ToListAsync()) :
-                          Problem("Entity set 'WebAppTestDbContext.EmployeeSet'  is null.");
+            if(Id == null)
+            {
+                return _context.EmployeeSet != null ?
+                         View(await _context.EmployeeSet.ToListAsync()) :
+                         Problem("Entity set 'WebAppTestDbContext.EmployeeSet'  is null.");
+            }
+            else
+            {
+                var model = await _context.EmployeeSet.Where(e => e.IdDepartment == Id).ToListAsync();
+                return View(model);
+            }
+             
         }
 
         // GET: Employees/Details/5
